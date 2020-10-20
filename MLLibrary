@@ -1,0 +1,78 @@
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+public class DataPoint{
+  private double f1,f2;
+  private String label,type;
+  
+  public DataPoint() { }
+  
+  public DataPoint(double par1, double par2, String par3, String par4){
+     this.f1=par1;
+     this.f2=par2;
+     this.label=par3;
+     this.type=par4;
+  }
+  //accessors
+  public double getF1() { return this.f1; }
+  public double getF2() { return this.f2; }
+  public String getLabel() { return this.label; }
+  public String getType() { return this.type; }
+  
+  //mutators
+  public void setF1(double in) { this.f1=in; }
+  public void setF2(double in) { this.f2=in; }
+  public void setLabel(String in) { this.label=in; }
+  public void setType(String in) { this.type=in; }
+}
+
+public class DummyModel extends Model{
+	  public abstract void train(ArrayList<DataPoint> data){ return f1+f2/2; }
+	  public abstract String test(ArrayList<DataPoint> data){ //implement function }
+	  public abstract Double getAccuracy(ArrayList<DataPoint> data){ //implement function }
+	  public abstract Double getPrecision(ArrayList<DataPoint> data){ //implement function }
+	}
+
+	public class Driver{
+		private static void initAndShowGUI() {
+		    JFrame myFrame = new JFrame();
+			myFrame.setTitle("Precision and Accuracy");
+			Container contentPane = myFrame.getContentPane();
+			myFrame.pack();
+			myFrame.setVisible(true);
+			myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			myFrame.setSize(300, 400);
+			JPanel myPanel = new JPanel();
+			myPanel.setLayout(new GridLayout(2,2,10,10));
+			myPanel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+			
+			DataPoint obj1 = new DataPoint(1.0,2.0,"Apple","Red");
+		    Point2dButton myButton = new Point2dButton("label", obj1);
+			JButton label1= new JButton("String label");
+			obj1.toString();
+			myPanel.add(label1);
+			myFrame.add(myPanel);
+			
+			DataPoint obj2 = new DataPoint(2.0,3.0,"Grape","Purple");
+		    Point2dButton myButton2 = new Point2dButton("label", obj2);
+			JButton label2= new JButton("String label");
+			obj2.toString();
+			myPanel.add(label2);
+			myFrame.add(myPanel);
+			
+			}
+	}
+	  public static void main(String[] args){
+		  SwingUtilities.invokeLater(
+		          new Runnable() { public void run() { initAndShowGUI(); } }
+		        );
+	  }
+	   }
+	}
+	
+	
