@@ -21,6 +21,13 @@ class Main {
     newModel.train(trainingData);
     
     String result = newModel.test(testData);
+    
+    double accuracy = newModel.getAccuracy(testData);
+    double precision = newModel.getPrecision(testData);
+
+    String accString = Double.toString(accuracy);
+    String precString = Double.toString(precision);
+
 
     JFrame newPane = new JFrame("Java Project Part 1");
     newPane.setSize(100, 100);
